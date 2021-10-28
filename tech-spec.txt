@@ -38,6 +38,8 @@ METHODS
 createAuction (listing, listingInfo, category, timer, royalty)
 {
     self explanatory
+    converts timer to blocks
+    royalty will be given to creator's account at the end of auction
 }
 
 register (account ID, password, funds)
