@@ -1,0 +1,94 @@
+TECH SPECS AND OUTLINE FOR Auction
+
+
+
+VARIABLES
+
+listing
+- the name of the item for auction
+
+listingInfo
+- information regarding the item
+
+category
+- the category that the bid is under
+
+timer
+- in seconds, can convert to minutes and hours for display on site
+
+higestBid
+- the current highest bid on the item
+
+ArrayList of bids (or some other easy to use structure for other languages), probably just called bids
+- stores all the bids that people have made
+
+accounts
+- a dictionary (or collection/nested dictionary) that stores users' data and their previous bids, as well as successful bids and reputation
+
+currentBlock
+- the block that the system is currently on
+
+endBlock
+- the block that the auction will end on, based off of timer
+
+
+
+METHODS
+
+createAuction (listing, listingInfo, category, timer, royalty)
+{
+    self explanatory
+}
+
+register (account ID, password, funds)
+{
+    adds account to the dictionary
+    adds funds to account balance
+}
+
+checkFunds (account ID)
+{
+    checks the account located in dictionary
+}
+
+deposit (amount)
+{
+    adds the amount to account balance
+}
+
+withdraw (amount)
+{
+    checks if account has the balance to do so, then withdraws the given amount
+}
+
+bid (amount, message)
+{
+    checks to see if the active account has the given funds
+    if true, adds bid to the pool
+        changes highestBid if the bid is the highest in the pool
+    if currentBlock is less than 45 seconds until endBlock 
+        add another block (new endBlock) to extend auction by 30 seconds (timer too)
+    sends message to display on auction page to allow for social interaction
+}
+
+filter (category)
+{
+    allows user to choose category of auction to search up
+}
+
+endAuction (listing)
+{
+    print congratulations for given user
+    put won item into winning user's account
+    adds funds to winning user equivalent to 2% of highestBid
+    in the dictionary, adds +1 to number of bids won
+        if bids won becomes a certain interval (10, 25, 50, etc.), a prize is added to user's account
+    gives royalty to creator of bid
+    gives small percentage of highestBid to select users   
+        our class's people (look in accounts)
+}
+
+giveReputation (user)
+{
+    active user gives reputation choice to user of choice (if their account is in dictionary)
+}
