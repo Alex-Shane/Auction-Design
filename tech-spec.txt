@@ -1,6 +1,9 @@
 TECH SPECS AND OUTLINE FOR Auction
 
 
+
+
+
 AUCTION CLASS
 
 Variables
@@ -42,7 +45,7 @@ createAuction (listing, listingInfo, category, timer, royalty)
 
 bid (amount, message)
 {
-    checks to see if the active account has the given funds
+    checks to see if the active account has the given funds (also makes sure the total of user's current active bids doesn't exceed total funds)
     if true, adds bid to the pool
         changes highestBid if the bid is the highest in the pool
     if currentBlock is less than 45 seconds until endBlock 
@@ -109,3 +112,11 @@ withdraw (amount)
 {
     checks if account has the balance to do so, then withdraws the given amount
 }
+
+
+
+
+
+PRIORITY LIST
+
+createAuction, bid, and endAuction
