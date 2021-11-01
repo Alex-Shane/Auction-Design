@@ -1,8 +1,9 @@
 TECH SPECS AND OUTLINE FOR Auction
 
 
+AUCTION CLASS
 
-VARIABLES
+Variables
 
 listing
 - the name of the item for auction
@@ -22,9 +23,6 @@ higestBid
 ArrayList of bids (or some other easy to use structure for other languages), probably just called bids
 - stores all the bids that people have made
 
-accounts
-- a dictionary (or collection/nested dictionary) that stores users' data and their previous bids, as well as successful bids and reputation
-
 currentBlock
 - the block that the system is currently on
 
@@ -33,34 +31,13 @@ endBlock
 
 
 
-METHODS
+Methods
 
 createAuction (listing, listingInfo, category, timer, royalty)
 {
     self explanatory
     converts timer to blocks
     royalty will be given to creator's account at the end of auction
-}
-
-register (account ID, password, funds)
-{
-    adds account to the dictionary
-    adds funds to account balance
-}
-
-checkFunds (account ID)
-{
-    checks the account located in dictionary
-}
-
-deposit (amount)
-{
-    adds the amount to account balance
-}
-
-withdraw (amount)
-{
-    checks if account has the balance to do so, then withdraws the given amount
 }
 
 bid (amount, message)
@@ -90,7 +67,45 @@ endAuction (listing)
         our class's people (look in accounts)
 }
 
+
+
+
+
+
+
+USER CLASS
+
+
+Variables
+
+accounts
+- a dictionary (or collection/nested dictionary) that stores users' data and their previous bids, as well as successful bids and reputation
+
+
+Methods
+
+register (account ID, password, funds)
+{
+    adds account to the dictionary
+    adds funds to account balance
+}
+
+checkFunds (account ID)
+{
+    checks the account located in dictionary
+}
+
 giveReputation (user)
 {
     active user gives reputation choice to user of choice (if their account is in dictionary)
+}
+
+deposit (amount)
+{
+    adds the amount to account balance
+}
+
+withdraw (amount)
+{
+    checks if account has the balance to do so, then withdraws the given amount
 }
