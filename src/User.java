@@ -15,6 +15,12 @@ public class User extends Auction{
 	}
 	
 	public void makeBid (double bidPrice, Item item) { 
+		for (Bid b: userBids) {
+			if (b.item == item && b.bidPrice == bidPrice) {
+				System.out.println(accountID + "- You have already made this bid.");
+				return;
+			}
+		}
 		if (bidPrice <= funds && bidPrice >= item.price){
 			Bid newBid = new Bid(accountID, item, bidPrice, this.getTimeStamp());
 			userBids.add(newBid);

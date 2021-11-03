@@ -66,7 +66,7 @@ public class Auction {
 		}
 		if (!winner.equals("")) {
 			System.out.println("Dear "+ winner + ", you have won "+item+ " which you bid for $" + highest+". " );
-			if (transactionSuccess(item, winner))
+			if (transactionSuccess(item, winner, highest))
 				System.out.println("The transaction succeeded.");
 			else
 				System.out.println("The transaction failed.");
@@ -75,11 +75,12 @@ public class Auction {
 		}
 	}
 	
-	public boolean transactionSuccess(String item, String bidderID) {
+	public boolean transactionSuccess(String item, String bidderID, double highestPrice) {
 		User winner = users.get(bidderID);
 		Item obj = currentBlock.getItem(item);
 		User seller = users.get(obj.seller);
-		double amt = obj.price;
+		double amt = highestPrice;
+		System.out.println(amt);
 		double royalty = amt*0.05;
 		if (winner.checkFunds()>=amt+royalty) {
 			winner.funds -= amt + royalty;
