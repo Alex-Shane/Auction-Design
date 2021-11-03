@@ -11,9 +11,9 @@ public class Block {
 	}
 	
 	public Item getItem (String itemName) {
-		for (int i = 0; i<bids.size(); i++) {
-			if (bids.get(i).listing.equals(itemName)) {
-				return bids.get(i);
+		for (Item obj : bids) {
+			if (obj.listing.equals(itemName)) {
+				return obj;
 			}
 		}
 		return null;

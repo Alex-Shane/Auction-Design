@@ -15,18 +15,19 @@ public class User extends Auction{
 	}
 	
 	public void makeBid (double bidPrice, Item item) { 
-		if (bidPrice <= funds){
-			Bid newBid = new Bid(item, bidPrice, this.getTimeStamp());
+		if (bidPrice <= funds && bidPrice >= item.price){
+			Bid newBid = new Bid(accountID, item, bidPrice, this.getTimeStamp());
 			userBids.add(newBid);
-			item.bidsOnItem.add(newBid);
-		}else {
-			System.out.println("INSUFFICIENT FUNDS!");
-		}
+			item.bidsOnItem.add(newBid);	
+			System.out.println(accountID + " MADE A BID ON " + item.listing + " FOR $"+bidPrice);
+		}else 
+			System.out.println(accountID + " - INSUFFICIENT FUNDS/BID PRICE MUST BE HIGHER THAN LISTPRICE!");
+		
 	}
 	
-	public void listItem (Double price, String accountID, String listing, String listingInfo, String category) {
+	public Item listItem (double price, String listing, String listingInfo, String category) {
 		Item newItem = new Item(price, accountID, listing, listingInfo, category);
-		super.createAuction(newItem);
+		return newItem;
 	}
 	
 	public double checkFunds () {
