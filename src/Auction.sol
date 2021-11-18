@@ -19,6 +19,11 @@ contract Auction{
         _;
     }
     
+    modifier sufficientBalance(uint balance) {
+         require(msg.sender.balance > balance, "User needs to have sufficient balance to bid for item");
+         _;
+     }
+    
     constructor (){
         seller = payable(msg.sender);
     }
@@ -30,7 +35,7 @@ contract Auction{
         startingPrice = _startingPrice;
     }
     
-    function makeBid (uint amt, string memory messageToSeller) public highEnoughBid(amt) returns (string memory){
+    function makeBid (uint amt, string memory messageToSeller) public highEnoughBid(amt) sufficientBalance(amt) returns (string memory){
         require(amt > 0, "Your bid cannot be negative or 0");
         if (amt>highestBid){
             highestBid = amt;
@@ -39,7 +44,7 @@ contract Auction{
         return (messageToSeller);
     }
 
-    function winAuction () external payable {
+    function winAuction () external sufficientBalance(highestBid) payable {
         if (highestBidder != address(0)) {
             nft.safeTransferFrom(address(this), highestBidder, nftID);
         } 
