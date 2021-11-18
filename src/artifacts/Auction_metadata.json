@@ -84,7 +84,7 @@
 				"name": "nft",
 				"outputs": [
 					{
-						"internalType": "contract IERC721",
+						"internalType": "contract ERC721",
 						"name": "",
 						"type": "address"
 					}
@@ -278,11 +278,11 @@
 			]
 		},
 		"src/Auction.sol": {
-			"keccak256": "0x28d9a5baeee1cde25e500aaf5695f1dae9a49e2fbeaa12e2b10a83eeeac40637",
+			"keccak256": "0x62f9f3823c4a6c0973a7a56121713fb59548f47ef7c014d28908a39b4070dc7d",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://361c66bd0b98ef05b173f5d902fdaff7be89092537ae39ff1ed46118eaff0db1",
-				"dweb:/ipfs/Qmf9es8rYdgx7RbZ6aThqvaYA39rkVcvJzJZLwUFs9eAwJ"
+				"bzz-raw://e0c0519024b1bab54ab1ea6fc6bbcf00b57eca313a4fadd9f25c3afd6a814d9e",
+				"dweb:/ipfs/QmPfGyG2iP9mfbkrFW58C8m3g2SpTZRyBCX2o2x5qNpS2Q"
 			]
 		}
 	},

@@ -6,15 +6,16 @@ pragma solidity >=0.8.9;
 contract Auction{
     address payable public seller;
     address public highestBidder;
-    IERC721 public nft;
+    ERC721 public nft;
     uint public nftID;
     uint public highestBid = 0;
     uint public startingPrice;
 
     event Win(address winner, uint amt);
     
-    modifier sufficientBalance(uint balance) {
-        require(msg.sender.balance > balance, "User needs to have sufficient balance to bid for item");
+    modifier highEnoughBid(uint bidPrice)
+    {
+        require(bidPrice>highestBid, "Bid is lower than highest bid! Bid again!");
         _;
     }
     
@@ -22,14 +23,14 @@ contract Auction{
         seller = payable(msg.sender);
     }
     
-    function setNFT(address _nft, uint _nftID, uint _startingPrice) public {
+    function setNFT(address _nft, uint _nftID, uint _startingPrice) external {
         require(_startingPrice > 0, "Your price cannot be negative or 0");
-        nft = IERC721(_nft);
+        nft = ERC721(_nft);
         nftID = _nftID;
         startingPrice = _startingPrice;
     }
     
-    function makeBid (uint amt, string memory messageToSeller) public sufficientBalance(amt) returns (string memory){
+    function makeBid (uint amt, string memory messageToSeller) public highEnoughBid(amt) returns (string memory){
         require(amt > 0, "Your bid cannot be negative or 0");
         if (amt>highestBid){
             highestBid = amt;
@@ -38,13 +39,11 @@ contract Auction{
         return (messageToSeller);
     }
 
-    function winAuction () public payable sufficientBalance(highestBid){
+    function winAuction () external payable {
         if (highestBidder != address(0)) {
-        nft.safeTransferFrom(address(this), highestBidder, nftID);
+            nft.safeTransferFrom(address(this), highestBidder, nftID);
+        } 
         emit Win(highestBidder, highestBid);
-        } else {
-            nft.safeTransferFrom(address(this), seller, nftID);
-        }
     }
     
 }
