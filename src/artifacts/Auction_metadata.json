@@ -44,12 +44,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "incentive",
+				"name": "highestBidder",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "address",
 						"name": "",
-						"type": "uint256"
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -159,19 +159,6 @@
 				"name": "winAuction",
 				"outputs": [],
 				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "winner",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
 				"type": "function"
 			}
 		],
@@ -291,11 +278,11 @@
 			]
 		},
 		"src/Auction.sol": {
-			"keccak256": "0x39882df4057d735ec4dff6d248bf7a729fd0d2b7226d3392b36258e4260f7ae1",
+			"keccak256": "0x28d9a5baeee1cde25e500aaf5695f1dae9a49e2fbeaa12e2b10a83eeeac40637",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://218329467856ce8a7096cbc71e59bed076edeaea6d1d32b09712a36e039c1387",
-				"dweb:/ipfs/Qma3oknWbMAsLPmAKiHHW4PxyHS9zypZ7KTMJwGbsGkkcQ"
+				"bzz-raw://361c66bd0b98ef05b173f5d902fdaff7be89092537ae39ff1ed46118eaff0db1",
+				"dweb:/ipfs/Qmf9es8rYdgx7RbZ6aThqvaYA39rkVcvJzJZLwUFs9eAwJ"
 			]
 		}
 	},
