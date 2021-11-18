@@ -5,8 +5,8 @@ pragma solidity >=0.8.9;
 
 contract Auction{
     address payable public seller;
-    address public highestBidder;
-    ERC721 public nft;
+    address public highestBidder = address(0);
+    IERC721 public nft;
     uint public nftID;
     uint public highestBid = 0;
     uint public startingPrice;
@@ -25,7 +25,7 @@ contract Auction{
     
     function setNFT(address _nft, uint _nftID, uint _startingPrice) external {
         require(_startingPrice > 0, "Your price cannot be negative or 0");
-        nft = ERC721(_nft);
+        nft = IERC721(_nft);
         nftID = _nftID;
         startingPrice = _startingPrice;
     }
